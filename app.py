@@ -188,10 +188,9 @@ def calcular_macros(calorias):
 
 
 @app.route("/calculadora", methods=["GET", "POST"])
-def index():
+def calculadora():
     if request.method == "POST":
 
-        
         try:
             peso = float(request.form["peso"])
             altura_m = float(request.form["altura"]) 
@@ -220,7 +219,6 @@ def index():
 
     return render_template("calculadora.html")
 
-#Analizador de recetas
 
 
 if __name__ == '__main__':
