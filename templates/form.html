@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}Perfil de Usuario - Kiwi App{% endblock %}
+
+{% block content %}
+<main class="container py-5">
+    <h1 class="text-center mb-4 text-secondary">🥝 Conviértete en un kiwi usuario.</h1>
+    <form action="/perfil" method="POST">
+        
+        <div class="card mb-4 shadow-sm border-secondary">
+            <div class="card-header bg-dark text-light">
+                <h4 class="mb-0">Personal</h4>
+            </div>
+            <div class="card-body bg-light">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="nombre" class="form-label text-muted">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required minlength="2">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="apellidos" class="form-label text-muted">Apellidos</label>
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" required minlength="2">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="email" class="form-label text-muted">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="password" class="form-label text-muted">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-sm border-secondary">
+            <div class="card-header bg-dark text-light">
+                <h4 class="mb-0">Datos basicos</h4>
+            </div>
+            <div class="card-body bg-light">
+                <div class="row g-3">
+                    <div class="col-sm-6 col-md-3">
+                        <label for="edad" class="form-label text-muted">Edad (años)</label>
+                        <input type="number" class="form-control" id="edad" name="edad" min="1" max="120" required>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label for="sexo" class="form-label text-muted">Sexo</label>
+                        <select class="form-select" id="sexo" name="sexo" required>
+                            <option selected disabled value="">Elegir...</option>
+                            <option value="femenino">Femenino</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label for="peso" class="form-label text-muted">Peso (kg)</label>
+                        <input type="number"  class="form-control" id="peso" name="peso" min="10" required>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label for="altura" class="form-label text-muted">Altura (cm)</label>
+                        <input type="number" class="form-control" id="altura" name="altura" min="50" max="250" placeholder="Ejem: 1.60" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="nivel_actividad" class="form-label text-muted">Actividad Física</label>
+                        <select class="form-select" id="nivel_actividad" name="nivel_actividad" required>
+                            <option selected disabled value="">Selecciona tu nivel...</option>
+                            <option value="sedentario">Sedentario </option>
+                            <option value="ligero">Ligero </option>
+                            <option value="moderado">Moderado </option>
+                            <option value="activo">Activo </option>
+                            <option value="muy_activo">Muy Activo</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-sm border-secondary">
+            <div class="card-header bg-light text-secondary">
+                <h4 class="mb-0">Objetivos y alergias</h4>
+            </div>
+            <div class="card-body bg-light">
+                <p class="fw-bold text-muted">¿Cuál es objetivo?</p>
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="bajar_peso" id="obj_bajar_peso" name="objetivos">
+                            <label class="form-check-label text-muted" for="obj_bajar_peso">Bajar de peso</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="aumentar_musculo" id="obj_aumentar_musculo" name="objetivos">
+                            <label class="form-check-label text-muted" for="obj_aumentar_musculo">Aumentar masa muscular</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="mantener_peso" id="obj_mantener_peso" name="objetivos">
+                            <label class="form-check-label text-muted" for="obj_mantener_peso">Mantener peso</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="mejorar_digestion" id="obj_mejorar_digestion" name="objetivos">
+                            <label class="form-check-label text-muted" for="obj_mejorar_digestion">Mejorar digestión</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="control_diabetes" id="obj_control_diabetes" name="objetivos">
+                            <label class="form-check-label text-muted" for="obj_control_diabetes">Controlar diabetes</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="control_hipertension" id="obj_control_hipertension" name="objetivos">
+                            <label class="form-check-label text-muted" for="obj_control_hipertension">Controlar hipertensión</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="otro_objetivo" class="form-label text-muted">Otro objetivo (opcional):</label>
+                        <input type="text" class="form-control" id="otro_objetivo" name="otro_objetivo">
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <p class="fw-bold text-muted">Alergias e Intolerancias:</p>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="alergias" class="form-label text-muted">Alergias (Separalas por comas)</label>
+                        <input type="text" class="form-control" id="alergias" name="alergias" placeholder="Ej: maní, nueces, mariscos etc">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="intolerancias" class="form-label text-muted">Intolerancias (Separadas por coma, ej: lactosa, gluten)</label>
+                        <input type="text" class="form-control" id="intolerancias" name="intolerancias" placeholder="Ej: lactios o gluten">
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <p class="fw-bold text-muted">Tipo de Dieta:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <select class="form-select" id="tipo_dieta" name="tipo_dieta">
+                            <option selected disabled value="">Selecciona tu tipo de dieta...</option>
+                            <option value="ninguna">Ninguna</option>
+                            <option value="vegetariana">Vegetariana</option>
+                            <option value="vegana">Vegana</option>
+                            <option value="paleo">Paleo</option>
+                            <option value="keto">Keto</option>
+                            <option value="mediterranea">Mediterránea</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <button type="submit" class="btn btn-secondary btn-lg">Guardar Perfil</button>
+        </div>
+    </form>
+</main>
+<div class="alert alert-danger" role="alert">
+Este sitio web NO esta diseñado para bebes o niños pequeños ya que estos requieren de mas cuidados y dietas especificas, si necesita 
+aprender sobre cuidados en bebes y infantes acuda con un profesional, gracias.</div>
+{% endblock %}
