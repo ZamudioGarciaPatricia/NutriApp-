@@ -149,75 +149,91 @@ def perfil():
             'otro_objetivo': request.form.get('otro_objetivo') or None
         }
         flash('Perfil creado con éxito.')
-        return redirect(url_for('iniciar_sesion'))
+        return redirect(url_for('inicio'))
 
-    return render_template('perfil.html')
+    return render_template('incio.html')
 
 
 #Calculadoras
+#Nota personal: Formulas usadas
 
-def calcular_imc(peso, altura):
-    """Calcula el Índice de Masa Corporal (altura en metros)."""
-    return peso / (altura ** 2)
+# 1. IMC = peso_kg / altura_m^2
+# 2. TMB (Harris-Benedict)
+#     Hombres: 88.362 + (13.397*peso) + (4.799*altura_cm) - (5.677*edad)
+#     Mujeres: 447.593 + (9.247*peso) + (3.098*altura_cm) - (4.330*edad)
+# 3. GCT = TMB * factor_actividad
+# 4. Peso Ideal (Devine)
+#     Hombres: 50 + 2.3*(pulgadas - 60)
+#     Mujeres: 45.5 + 2.3*(pulgadas - 60)
+# 5. Macronutrientes (modelo simple)
+#     Proteínas = 2 g por kg
+#     Grasas = 0.8 g por kg
+#     Carbs = (calorías restantes / 4)
 
-def calcular_tmb(sexo, peso, altura_cm, edad):
-    """Calcula la Tasa Metabólica Basal (Fórmula Mifflin-St Jeor)."""
-    if sexo == "masculino": 
-        return 10 * peso + 6.25 * altura_cm - 5 * edad + 5
-    else:
-        return 10 * peso + 6.25 * altura_cm - 5 * edad - 161
+@app.route("/", methods=["GET", "POST"])
+def calculadoras():
+    resultados = {}
 
-def calcular_gct(tmb, actividad):
-
-    factores = {
-        "sedentario": 1.2,
-        "ligero": 1.375,
-        "moderado": 1.55,
-        "activo": 1.725,  
-        "muy_activo": 1.9 
-    }
-    return tmb * factores.get(actividad, 1.2)
-
-
-
-def calcular_macros(calorias):
-    prote = calorias * 0.30 / 4
-    carbos = calorias * 0.40 / 4     
-    grasas = calorias * 0.30 / 9     
-    return prote, carbos, grasas
-
-
-@app.route("/calculadora", methods=["GET", "POST"])
-def calculadora():
     if request.method == "POST":
+        calc = request.form.get("calc")
 
-        try:
+        # IMC
+        if calc == "imc":
             peso = float(request.form["peso"])
-            altura_m = float(request.form["altura"]) 
-            altura_cm = altura_m * 100 
+            altura = float(request.form["altura"])
+            resultados["imc"] = round(peso / (altura ** 2), 2)
+
+        # TMB
+        if calc == "tmb":
+            peso = float(request.form["peso"])
+            altura = float(request.form["altura"])
             edad = int(request.form["edad"])
             sexo = request.form["sexo"]
-            actividad = request.form["actividad"]
-        except ValueError:
-            return render_template("calculadora.html", error="Por favor, introduce valores numéricos válidos.")
 
+            if sexo == "hombre":
+                tmb = 88.362 + (13.397 * peso) + (4.799 * altura) - (5.677 * edad)
+            else:
+                tmb = 447.593 + (9.247 * peso) + (3.098 * altura) - (4.330 * edad)
 
-        imc = calcular_imc(peso, altura_m)
-        tmb = calcular_tmb(sexo, peso, altura_cm, edad)
-        gct = calcular_gct(tmb, actividad)
-        prote, carbos, grasas = calcular_macros(gct)
+            resultados["tmb"] = round(tmb)
 
-        return render_template(
-            "resultado.html",
-            imc=round(imc, 2),
-            tmb=round(tmb, 2),
-            gct=round(gct, 2),
-            prote=round(prote, 3),
-            carbos=round(carbos, 2),
-            grasas=round(grasas, 2)
-        )
+        # GCT
+        if calc == "gct":
+            tmb = float(request.form["tmb"])
+            factor = float(request.form["factor"])
+            resultados["gct"] = round(tmb * factor)
 
-    return render_template("calculadora.html")
+        #peso ideal
+        if calc == "ideal":
+            altura = float(request.form["altura"])
+            sexo = request.form["sexo"]
+
+            pulg = altura / 2.54
+
+            if sexo == "hombre":
+                ideal = 50 + 2.3 * (pulg - 60)
+            else:
+                ideal = 45.5 + 2.3 * (pulg - 60)
+
+            resultados["ideal"] = round(ideal, 1)
+
+        #macros
+        if calc == "macros":
+            peso = float(request.form["peso"])
+            calorias = float(request.form["calorias"])
+
+            prote = peso * 2
+            grasa = peso * 0.8
+            calorias_usadas = prote * 4 + grasa * 9
+            carbs = (calorias - calorias_usadas) / 4
+
+            resultados["macros"] = {
+                "prote": round(prote),
+                "grasa": round(grasa),
+                "carbs": round(carbs)
+            }
+
+    return render_template("calculadoras.html", resultados=resultados)
 
 
 
