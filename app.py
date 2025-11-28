@@ -170,7 +170,7 @@ def perfil():
 #     Grasas = 0.8 g por kg
 #     Carbs = (calorías restantes / 4)
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/calculadora", methods=["GET", "POST"])
 def calculadoras():
     resultados = {}
 
@@ -233,7 +233,7 @@ def calculadoras():
                 "carbs": round(carbs)
             }
 
-    return render_template("calculadoras.html", resultados=resultados)
+    return render_template("calculadora.html", resultados=resultados)
 
 
 
