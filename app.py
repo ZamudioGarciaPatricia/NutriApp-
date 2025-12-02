@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import requests
 
-USUARIOS = {} 
-
 
 app = Flask(__name__)
 app.secret_key = 'kiwi-secreto'
