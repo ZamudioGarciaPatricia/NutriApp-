@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% block title %}Calculadora{% endblock %}
+{% block title %}Recetas Saludables{% endblock %}
 {% block content %}
 
 <div class="container my-5 bg-dark text-light p-4 rounded shadow">
     
     <h1 class="text-center mb-4 text-success border-bottom border-success pb-2">Comidas Rápidas y Fáciles</h1>
-    <p class="lead text-center mb-5 text-secondary">Explora recetas saludables y veloces.</p>
+    <p class="lead text-center mb-5 text-secondary">Explora recetas saludables, veloces y aptas para restricciones dietéticas.</p>
 
     <div class="row mb-5">
         
@@ -19,7 +19,7 @@
                 <div class="card-body">
                     <p class="card-text text-secondary">Una deliciosa hamburguesa vegana, fuente de proteína y fibra.</p>
                     <ul class="list-unstyled">
-                        <li class="text-success"><strong>Ingredientes:</strong> tofu, garbanzos, cebolla, ajo, pan rallado, especias.</li>
+                        <li class="text-white"><strong>Ingredientes:</strong> tofu, garbanzos, cebolla, ajo, pan rallado, especias.</li>
                         <li class="text-secondary"><strong>Preparación:</strong> Mezcla, forma las hamburguesas y cocina a la plancha o al horno.</li>
                     </ul>
                 </div>
@@ -32,7 +32,7 @@
                 <div class="card-body">
                     <p class="card-text text-secondary">Una salsa cremosa y rápida, sin lácteos.</p>
                     <ul class="list-unstyled">
-                        <li class="text-success"><strong>Ingredientes:</strong> pasta, aguacate, albahaca, nueces, ajo, limón.</li>
+                        <li class="text-white"><strong>Ingredientes:</strong> pasta, aguacate, albahaca, nueces, ajo, limón.</li>
                         <li class="text-secondary"><strong>Preparación:</strong> Cocina la pasta. Licúa el resto de ingredientes para el pesto y mezcla.</li>
                     </ul>
                 </div>
@@ -49,7 +49,7 @@
                 <div class="card-body">
                     <p class="card-text text-secondary">Un plato horneado con berenjenas, calabacines y un toque de queso.</p>
                     <ul class="list-unstyled">
-                        <li class="text-success"><strong>Ingredientes:</strong> berenjenas, calabacines, queso, pasta de tomate, hierbas.</li>
+                        <li class="text-white"><strong>Ingredientes:</strong> berenjenas, calabacines, queso, pasta de tomate, hierbas.</li>
                         <li class="text-secondary"><strong>Preparación:</strong> Arma capas de verduras y salsa, hornea hasta que gratine.</li>
                     </ul>
                 </div>
@@ -62,7 +62,7 @@
                 <div class="card-body">
                     <p class="card-text text-secondary">Base de pizza baja en carbohidratos hecha con brócoli.</p>
                     <ul class="list-unstyled">
-                        <li class="text-success"><strong>Ingredientes:</strong> brócoli, queso mozzarella, huevos, aceite de oliva, toppings.</li>
+                        <li class="text-white"><strong>Ingredientes:</strong> brócoli, queso mozzarella, huevos, aceite de oliva, toppings.</li>
                         <li class="text-secondary"><strong>Preparación:</strong> Tritura el brócoli cocido, mezcla con queso y huevo, hornea la base y luego agrega toppings.</li>
                     </ul>
                 </div>
@@ -70,13 +70,14 @@
         </div>
     </div>
 
-    <h2 class="text-success border-bottom border-success pb-2 mb-3 mt-5">Recetas Ultra Rápidas (¡Menos de 20 Minutos!)</h2>
+    <hr class="border-secondary my-5">
+
+    <h2 class="text-success border-bottom border-success pb-2 mb-3 mt-5">Recetas Ultra Rápidas (Menos de 20 Minutos)</h2>
 
     <div class="row">
         
         <div class="col-lg-6">
-            
-            <div class="card bg-dark text-light border border-success mb-4 shadow-lg">
+            <div class="card bg-dark text-light border border-success mb-4 shadow-lg h-100">
                 <div class="card-header bg-success text-black">
                     <h5 class="mb-0">Tacos de Pollo Rápido</h5>
                 </div>
@@ -95,12 +96,10 @@
                     </ol>
                 </div>
             </div>
-            
         </div>
         
         <div class="col-lg-6">
-            
-            <div class="card bg-dark text-light border border-success mb-4 shadow-lg">
+            <div class="card bg-dark text-light border border-success mb-4 shadow-lg h-100">
                 <div class="card-header bg-success text-black">
                     <h5 class="mb-0">Revuelto de Huevo y Espinacas</h5>
                 </div>
@@ -119,8 +118,10 @@
                     </ol>
                 </div>
             </div>
-            
-            <div class="card bg-dark text-light border border-success mb-4 shadow-lg">
+        </div>
+        
+        <div class="col-lg-6">
+            <div class="card bg-dark text-light border border-success mb-4 shadow-lg h-100">
                 <div class="card-header bg-success text-black">
                     <h5 class="mb-0">Tostadas de Atún Picante</h5>
                 </div>
@@ -139,14 +140,112 @@
                     </ol>
                 </div>
             </div>
-            
         </div>
+        
+        <div class="col-lg-6">
+            <div class="card bg-dark text-light border border-success mb-4 shadow-lg h-100">
+                <div class="card-header bg-success text-black">
+                    <h5 class="mb-0">Ensalada de Lentejas y Verduras</h5>
+                </div>
+                <div class="card-body">
+                    <p class="font-weight-bold text-success">Ingredientes:</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item bg-dark text-light border-secondary">1 lata de lentejas cocidas (enjuagadas)</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">Tomate, pepino, pimiento rojo (picados)</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">Aceite de oliva, vinagre, mostaza, orégano</li>
+                    </ul>
+                    <p class="font-weight-bold text-success">Preparación:</p>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item bg-dark text-light border-secondary">Combina las lentejas y las verduras en un tazón.</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">Mezcla el aceite, vinagre, mostaza y orégano para el aderezo.</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">Sirve con el aderezo. ¡Lista en 10 minutos!</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="border-secondary my-5">
+
+    <h2 class="text-success border-bottom border-success pb-2 mb-3 mt-5">Recetas Libres de Alérgenos Comunes</h2>
+    <p class="text-secondary mb-4">Opciones seguras para las intolerancias y alergias más frecuentes.</p>
+
+    <div class="row">
+
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card bg-dark text-light border border-success shadow-lg h-100">
+                <div class="card-header bg-secondary text-white">
+                    <h6 class="mb-0 font-weight-bold text-white">Libre de Gluten</h6>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-white">Bowl de Quinoa con Vegetales</h5>
+                    <p class="card-text small text-secondary">Ideal para celíacos y sensible al gluten.</p>
+                    <ul class="list-unstyled small">
+                        <li class="text-white"><strong>Ingredientes:</strong> Quinoa, aguacate, maíz, tomate cherry, aderezo de limón.</li>
+                        <li class="text-secondary"><strong>Preparación:</strong> Cocina la quinoa. Mezcla con los vegetales y el aderezo.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card bg-dark text-light border border-success shadow-lg h-100">
+                <div class="card-header bg-secondary text-white">
+                    <h6 class="mb-0 font-weight-bold text-white">Libre de Lácteos</h6>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-white">Curry de Garbanzos y Leche de Coco</h5>
+                    <p class="card-text small text-secondary">Sopa rica, cremosa y apta para intolerantes a la lactosa.</p>
+                    <ul class="list-unstyled small">
+                        <li class="text-white"><strong>Ingredientes:</strong> Garbanzos, leche de coco, pasta de curry, espinacas, arroz.</li>
+                        <li class="text-secondary"><strong>Preparación:</strong> Sofríe la pasta, añade la leche, garbanzos y espinacas. Sirve con arroz.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card bg-dark text-light border border-success shadow-lg h-100">
+                <div class="card-header bg-secondary text-white">
+                    <h6 class="mb-0 font-weight-bold text-white">Libre de Huevo</h6>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-white">Fajitas de Res con Pimiento</h5>
+                    <p class="card-text small text-secondary">Una comida completa sin necesidad de usar huevo como aglutinante.</p>
+                    <ul class="list-unstyled small">
+                        <li class="text-white"><strong>Ingredientes:</strong> Tiras de carne de res, cebolla, pimientos (rojo, verde), tortillas de maíz.</li>
+                        <li class="text-secondary"><strong>Preparación:</strong> Saltea la carne y los vegetales. Rellena las tortillas.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card bg-dark text-light border border-success shadow-lg h-100">
+                <div class="card-header bg-secondary text-white">
+                    <h6 class="mb-0 font-weight-bold text-white">Libre de Nueces/Semillas</h6>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-white">Pollo al Limón y Hierbas</h5>
+                    <p class="card-text small text-secondary">Receta fresca que utiliza hierbas en lugar de frutos secos para sabor.</p>
+                    <ul class="list-unstyled small">
+                        <li class="text-white"><strong>Ingredientes:</strong> Pollo, limón, ajo, romero, tomillo, papas cocidas.</li>
+                        <li class="text-secondary"><strong>Preparación:</strong> Hornea o cocina a la plancha el pollo marinado con las hierbas y el limón.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
     </div>
     
     <div class="text-center mt-5 p-3 bg-dark rounded border border-success">
-        <p class="mb-0 text-secondary">Come delicioso y ahorra tiempo.</p>
+        <p class="mb-0 text-secondary">¡Come delicioso y ahorra tiempo!</p>
     </div>
 
 </div>
 
+{% endblock %}
+
+{% block scripts %}
 {% endblock %}
