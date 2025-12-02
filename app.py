@@ -6,7 +6,6 @@ USUARIOS = {}
 
 app = Flask(__name__)
 app.secret_key = 'kiwi-secreto'
-API_KEY = "2mVbF6kxK7xneQO7arHpkEhocL3fieky45ymC89t" 
 
 
 #Rutas
@@ -30,73 +29,99 @@ def recetas():
 
 
 #Analizador
-BASE_URL = "https://api.nal.usda.gov/fdc/v1/foods/search"
 
-@app.route("/analizador", methods=["GET", "POST"])
-def index():
+app.secret_key = "llave_segura"
+
+API_LLAVE = "2mVbF6kxK7xneQO7arHpkEhocL3fieky45ymC89t"
+
+
+
+def buscar_id(nombre_busqueda):
+    url = "https://api.nal.usda.gov/fdc/v1/foods/search"
+    datos = {"api_key": API_LLAVE, "query": nombre_busqueda}
+
+    r = requests.get(url, params=datos)
+    if r.status_code != 200:
+        return None
+
+    info = r.json()
+    if info.get("foods"):
+        return info["foods"][0]["fdcId"]
+    return None
+
+
+def traer_kcal(id_food):
+    url = f"https://api.nal.usda.gov/fdc/v1/food/{id_food}"
+    datos = {"api_key": API_LLAVE}
+
+    r = requests.get(url, params=datos)
+    if r.status_code != 200:
+        return 0
+
+    info = r.json()
+    kcal_totales = 0
+
+    if "foodNutrients" in info:
+        for n in info["foodNutrients"]:
+            if n.get("nutrient", {}).get("id") == 1008: 
+                kcal_totales += n.get("amount", 0)
+
+    return kcal_totales
+
+
+def revisar_salud(kc):
+    if kc > 900:
+        return "No saludable"
+    return "Saludable"
+
+
+@app.route("/analizar_receta", methods=["GET", "POST"])
+def receta_ruta():
     if request.method == "POST":
-        ingredientes = []
-        
-        for i in range(1, 11):
-            nombre = request.form.get(f"ingrediente{i}")
-            if nombre and nombre.strip():
-                ingredientes.append(nombre.strip())
+        texto = request.form.get("ingredientes", "").strip()
 
-        if not ingredientes:
-            flash("Debes ingresar al menos un ingrediente.")
-            return render_template("index.html")
+        if not texto:
+            flash("Escribe al menos un ingrediente.", "warning")
+            return redirect(url_for("receta_ruta"))
 
-        calorias_totales = 0
-        proteinas_totales = 0
+        lineas = texto.split("\n")
+        total_kc = 0
+        ok = []
+        mal = []
 
-        for item in ingredientes:
-            params = {
-                "api_key": API_KEY,
-                "query": item
-            }
-
-            r = requests.get(BASE_URL, params=params)
-
-            if r.status_code != 200:
-                flash(f"No se pudo consultar: {item}")
+        for t in lineas:
+            nombre = t.strip()
+            if not nombre:
                 continue
 
-            data = r.json()
-
-            if "foods" not in data or len(data["foods"]) == 0:
-                flash(f"No se encontró información para: {item}")
+            identificador = buscar_id(nombre)
+            if not identificador:
+                mal.append(nombre)
                 continue
 
-            alimento = data["foods"][0]
+            kc = traer_kcal(identificador)
+            total_kc += kc
+            ok.append(nombre)
 
-            calories = 0
-            protein = 0
-
-            for nutriente in alimento.get("foodNutrients", []):
-                nombre = nutriente.get("nutrientName", "").lower()
-
-                if "energy" in nombre and nutriente.get("unitName") == "KCAL":
-                    calories = nutriente.get("value", 0)
-
-                if "protein" in nombre:
-                    protein = nutriente.get("value", 0)
-
-            calorias_totales += calories
-            proteinas_totales += protein
-
-        if calorias_totales < 600:
-            saludable = "Sí, es una receta saludable"
-        else:
-            saludable = "No, es alta en calorías"
+        estado_final = revisar_salud(total_kc)
 
         return render_template(
-            "calculadora.html",
-            calorias=calorias_totales,
-            proteinas=proteinas_totales,
-            saludable=saludable
+            "analizador.html",
+            receta_ingresada=texto,
+            lista_ok=ok,
+            lista_no=mal,
+            total_kc=total_kc,
+            estado_salud=estado_final
         )
 
-    return render_template("calculadora.html")
+    return render_template(
+        "analizador.html",
+        receta_ingresada="",
+        lista_ok=None,
+        lista_no=None,
+        total_kc=None,
+        estado_salud=None
+    )
 
 
 

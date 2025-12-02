@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Analizador de Receta - Kiwi App{% endblock %}
+
+{% block content %}
+<body class="bg-dark text-white min-vh-100"> 
+
+<div class="container py-4">
+
+    <div class="text-center mb-4">
+        <img src="/static/img/Oops!.jpeg"  alt="Imagen relacionada con recetas" class="img-fluid rounded-3 shadow"  style="max-height: 200px; width: auto; object-fit: cover;">
+    </div>
+    
+    <h3 class="mb-3">Analizador de Receta</h3>
+
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+      {% if mensajes %}
+        {% for cat, msg in mensajes %}
+          <div class="alert alert-warning border-dark" role="alert">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="post" class="mb-4">
+      <div class="mb-3">
+        <label class="form-label" for="ingredientes">Ingredientes (uno por línea)</label>
+        
+        <textarea 
+          class="form-control border border-3 border-success bg-dark text-white" 
+          name="ingredientes" 
+          id="ingredientes"
+          rows="6">{{ receta_ingresada }}</textarea>
+          
+      </div>
+      <div class="d-grid">
+        <button class="btn btn-success btn-lg">Analizar</button>
+      </div>
+    </form>
+
+    {% if total_kc is not none %}
+      <div class="card bg-secondary text-white border-0 shadow">
+        <div class="card-body">
+
+          <h5 class="card-title">Resultados del Análisis</h5>
+
+          <p><strong>Calorías estimadas:</strong> {{ total_kc|round(1) }} kcal</p>
+          <p class="fs-5">
+            <strong>Resultado:</strong>
+            {% if estado_salud == "Saludable" %}
+              <span class="badge bg-success p-2">Saludable</span>
+            {% else %}
+              <span class="badge bg-danger p-2">No saludable</span>
+            {% endif %}
+          </p>
+          
+          <hr class="border-light">
+
+          <div class="row">
+            <div class="col-md-6 mb-3 mb-md-0">
+                {% if lista_ok %}
+                    <p class="fw-bold text-light">Ingredientes procesados:</p>
+                    <ul class="list-group list-group-flush bg-secondary">
+                        {% for i in lista_ok %}
+                        <li class="list-group-item bg-secondary text-white border-0 py-1">{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <div class="col-md-6">
+                {% if lista_no %}
+                    <p class="fw-bold text-danger">Ingredientes omitidos:</p>
+                    <ul class="list-group list-group-flush bg-secondary">
+                        {% for i in lista_no %}
+                        <li class="list-group-item bg-secondary text-white border-0 py-1">{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+</div>
+
+</body>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
