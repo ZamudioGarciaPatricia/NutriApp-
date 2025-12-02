@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
+from flask import Flask, render_template, request, redirect, url_for, flash
 import requests
 
 USUARIOS = {} 
@@ -23,17 +23,16 @@ def info():
 def form():
     return render_template('form.html')
 
-
-
-
 @app.route('/recetas')
 def recetas():
     return render_template('recetas.html')
 
+
+
 #Analizador
 BASE_URL = "https://api.nal.usda.gov/fdc/v1/foods/search"
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/analizador", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         ingredientes = []
