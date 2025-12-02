@@ -1,68 +1,152 @@
 {% extends "base.html" %}
 {% block title %}Inicio - Kiwi App{% endblock %}
 {% block content %}
-<h1>Comidas rapidas y faciles</h1>
-<h1>Dieta vegana</h1>
-<div class="card">
-  <div class="card-header">
-    Hamburguesa de tofu
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote">
-      <p>- Hamburguesa de Tofu y Garbanzos: Una deliciosa hamburguesa vegana hecha con tofu y garbanzos.
-        - Ingredientes: tofu, garbanzos, cebolla, ajo, pan rallado
-        - Preparación: Mezcla todos los ingredientes y forma hamburguesas
-      </p>
-    </blockquote>
-  </div>
-</div>
-<h1>Dieta vegetariana</h1>
-<div class="card">
-  <div class="card-header">
-    Musaka de verduras
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote">
-      <p>- Una deliciosa musaka vegetariana hecha con berenjenas, calabacines y queso vegano.
-- Ingredientes: berenjenas, calabacines, queso vegano, pasta de tomate
-- Preparación: Mezcla todos los ingredientes y hornea en un molde
-</p>
-    </blockquote>
-  </div>
+
+<div class="container my-5 bg-dark text-light p-4 rounded shadow">
+    
+    <h1 class="text-center mb-4 text-success border-bottom border-success pb-2">Comidas Rápidas y Fáciles</h1>
+    <p class="lead text-center mb-5 text-secondary">Explora recetas saludables y veloces.</p>
+
+    <div class="row mb-5">
+        
+        <div class="col-md-6">
+            <h2 class="text-success border-bottom border-success pb-2 mb-3">Dieta Vegana</h2>
+            
+            <div class="card bg-dark text-light border border-success mb-3 shadow-lg">
+                <div class="card-header bg-success text-black border-success">
+                    <h5 class="mb-0">Hamburguesa de Tofu y Garbanzos</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-secondary">Una deliciosa hamburguesa vegana, fuente de proteína y fibra.</p>
+                    <ul class="list-unstyled">
+                        <li class="text-success"><strong>Ingredientes:</strong> tofu, garbanzos, cebolla, ajo, pan rallado, especias.</li>
+                        <li class="text-secondary"><strong>Preparación:</strong> Mezcla, forma las hamburguesas y cocina a la plancha o al horno.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card bg-dark text-light border border-success mb-3 shadow-lg">
+                <div class="card-header bg-success text-black border-success">
+                    <h5 class="mb-0">Pasta con Pesto de Aguacate</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-secondary">Una salsa cremosa y rápida, sin lácteos.</p>
+                    <ul class="list-unstyled">
+                        <li class="text-success"><strong>Ingredientes:</strong> pasta, aguacate, albahaca, nueces, ajo, limón.</li>
+                        <li class="text-secondary"><strong>Preparación:</strong> Cocina la pasta. Licúa el resto de ingredientes para el pesto y mezcla.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h2 class="text-success border-bottom border-success pb-2 mb-3">Dieta Vegetariana</h2>
+            
+            <div class="card bg-dark text-light border border-success mb-3 shadow-lg">
+                <div class="card-header bg-success text-black border-success">
+                    <h5 class="mb-0">Musaka de Verduras</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-secondary">Un plato horneado con berenjenas, calabacines y un toque de queso.</p>
+                    <ul class="list-unstyled">
+                        <li class="text-success"><strong>Ingredientes:</strong> berenjenas, calabacines, queso, pasta de tomate, hierbas.</li>
+                        <li class="text-secondary"><strong>Preparación:</strong> Arma capas de verduras y salsa, hornea hasta que gratine.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card bg-dark text-light border border-success mb-3 shadow-lg">
+                <div class="card-header bg-success text-black border-success">
+                    <h5 class="mb-0">Pizza de Brócoli (Base Keto)</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-secondary">Base de pizza baja en carbohidratos hecha con brócoli.</p>
+                    <ul class="list-unstyled">
+                        <li class="text-success"><strong>Ingredientes:</strong> brócoli, queso mozzarella, huevos, aceite de oliva, toppings.</li>
+                        <li class="text-secondary"><strong>Preparación:</strong> Tritura el brócoli cocido, mezcla con queso y huevo, hornea la base y luego agrega toppings.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="text-success border-bottom border-success pb-2 mb-3 mt-5">Recetas Ultra Rápidas (¡Menos de 20 Minutos!)</h2>
+
+    <div class="row">
+        
+        <div class="col-lg-6">
+            
+            <div class="card bg-dark text-light border border-success mb-4 shadow-lg">
+                <div class="card-header bg-success text-black">
+                    <h5 class="mb-0">Tacos de Pollo Rápido</h5>
+                </div>
+                <div class="card-body">
+                    <p class="font-weight-bold text-success">Ingredientes:</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item bg-dark text-light border-secondary">1 pechuga de pollo cocida y desmenuzada</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">1/2 cebolla picada, 1 jalapeño picado, cilantro</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">Jugo de limón, sal, pimienta, tortillas de maíz</li>
+                    </ul>
+                    <p class="font-weight-bold text-success">Preparación:</p>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item bg-dark text-light border-secondary">Mezcla el pollo, cebolla, jalapeño y cilantro en un tazón.</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">Agrega el jugo de limón y sazona al gusto.</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">Calienta las tortillas y rellena con la mezcla. Sirve.</li>
+                    </ol>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="col-lg-6">
+            
+            <div class="card bg-dark text-light border border-success mb-4 shadow-lg">
+                <div class="card-header bg-success text-black">
+                    <h5 class="mb-0">Revuelto de Huevo y Espinacas</h5>
+                </div>
+                <div class="card-body">
+                    <p class="font-weight-bold text-success">Ingredientes:</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item bg-dark text-light border-secondary">2 huevos grandes</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">1 puñado de espinacas frescas</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">Queso rallado (opcional), sal, pimienta, aceite de oliva</li>
+                    </ul>
+                    <p class="font-weight-bold text-success">Preparación:</p>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item bg-dark text-light border-secondary">Bate los huevos con sal y pimienta.</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">Saltea las espinacas en aceite hasta que se reduzcan.</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">Vierte el huevo batido sobre las espinacas y revuelve hasta que cuaje.</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="card bg-dark text-light border border-success mb-4 shadow-lg">
+                <div class="card-header bg-success text-black">
+                    <h5 class="mb-0">Tostadas de Atún Picante</h5>
+                </div>
+                <div class="card-body">
+                    <p class="font-weight-bold text-success">Ingredientes:</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item bg-dark text-light border-secondary">1 lata de atún (escurrido)</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">Mayonesa, salsa picante (al gusto)</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">Cebolla morada y cilantro picado, tostadas</li>
+                    </ul>
+                    <p class="font-weight-bold text-success">Preparación:</p>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item bg-dark text-light border-secondary">En un tazón, desmenuza el atún.</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">Mezcla con la mayonesa, salsa picante, cebolla y cilantro.</li>
+                        <li class="list-group-item bg-dark text-light border-secondary">Sirve generosamente sobre las tostadas.</li>
+                    </ol>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="text-center mt-5 p-3 bg-dark rounded border border-success">
+        <p class="mb-0 text-secondary">Come delicioso y ahorra tiempo.</p>
+    </div>
+
 </div>
 
-<h1></h1>
-<div class="card">
-  <div class="card-header">
-PIzza de brocoli  </div>
-  <div class="card-body">
-    <blockquote class="blockquote">
-      <p>- Pizza Verde de Brócoli: Una deliciosa pizza keto hecha con brócoli y queso.
-- Ingredientes: brócoli, queso, huevos, aceite de oliva
-- Preparación: Mezcla todos los ingredientes y hornea en un molde para pizza
-</p>
-    </blockquote>
-  </div>
-</div>
-<h1>Recetas rapidas</h1>
-<div class="card">
-  <div class="card-body">
-1. Tacos de Pollo
-
-Ingredientes:
-1 pechuga de pollo cocida y desmenuzada
-1/2 cebolla picada
-1 jalapeño picado
-1 cajo de cilantro picado
-2 cucharadas de jugo de limón
-Sal y pimienta al gusto
-Tortillas de maíz
-
-Preparación:
-1. En un tazón grande, mezcla la pechuga de pollo desmenuzada, la cebolla picada, el jalapeño picado y el cilantro picado.
-2. Agrega el jugo de limón y mezcla bien.
-3. Calienta las tortillas de maíz en una sartén o en el microondas.
-4. Coloca una cucharada de la mezcla de pollo en el centro de cada tortilla.
-5. Dobla la tortilla por la mitad y sirve caliente.  </div>
-</div>
 {% endblock %}
